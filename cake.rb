@@ -16,10 +16,8 @@ live_loop :drum1 do
   end
 end
 
-# Define the Tizita scale (D, F, G, B, C)
 tizita_scale = [:d, :f, :g, :b, :c]
 
-# Function to play the Tizita melody
 define :tizita_melody do
   use_synth :piano
   with_fx :reverb, room: 0.8 do
@@ -28,16 +26,14 @@ define :tizita_melody do
   end
 end
 
-# Function to create a simple beat
 define :tizita_beat do
   puts "tixita beats"
-  sample :bd_haus, amp: 0.5 # Kick drum
+  sample :bd_haus, amp: 0.5 
   sleep 0.5
-  sample :sn_dolf, amp: 0.1 # Snare
+  sample :sn_dolf, amp: 0.1 
   sleep 0.5
 end
 
-# Background drone
 live_loop :drone do
   use_synth :dark_ambience
   puts "drone"
@@ -46,7 +42,6 @@ live_loop :drone do
 end
 
 
-# Background drone
 live_loop :drone do
   use_synth :dark_ambience
   puts "drone"
@@ -54,7 +49,6 @@ live_loop :drone do
   sleep 2
 end
 
-# Live loop for Tizita melody
 live_loop :tizita do
   tizita_melody
   puts "tizita_melody"
@@ -62,9 +56,8 @@ live_loop :tizita do
   sleep 0.5 # Pause before repeating the melody
 end
 
-# Live loop for the beat
 live_loop :beat do
   puts "synch"
-  sync :tizita # Ensure the beat syncs with the melody
+  sync :tizita 
   tizita_beat
 end
